@@ -1,0 +1,102 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: 	#93D3AE; /* Set background color of the page */
+}
+
+canvas {
+    border: 1px solid #18191a; /* Add a border to the canvas */
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    right: 15rem;
+}
+
+.cell {
+    background-color: #6495ED;/* Set the color of the maze cells to blue */
+}
+
+.cell.visited {
+    background-color: #6175d0; /*Set the color of visited cells (path) to purple*/
+}
+
+.whitebox1{
+   /* background-color: white; */
+   opacity: .7;
+   position: relative;
+   bottom: 30rem;
+   left: 18rem;
+   height: 7rem;
+   width: 30rem;
+   padding: 0px;
+   margin: 0px;
+}
+
+.smallbox1{
+    background-color: white;
+   opacity: 1;
+   height: 5rem;
+   width: 15rem;
+}
+/* Styling for the maze size buttons */
+.maze-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.maze-button {
+    background-color: #072a4c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: "Rubik", sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.maze-button:hover {
+    background-color: #0a3c72;
+}
+
+/* Styling for the maze size and canvas size buttons */
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.button {
+    background-color: #072a4c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: "Rubik", sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0a3c72;
+}
+
+
+

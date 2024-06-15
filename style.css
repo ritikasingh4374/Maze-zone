@@ -1,0 +1,268 @@
+body {
+    background-color: #f5d3a6;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #24405c;
+    color: white;
+    text-align: right;
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    z-index: 10;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: "Rubik", sans-serif;
+    font-size: 20px;
+    padding: 1.2rem;
+}
+
+header nav ul li a:hover{
+    background-color: #0a2e43;
+}
+/* 
+footer {
+    background-color: #24405c;
+    color: white;
+    padding: 0.3rem;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-family: "Rubik", sans-serif;
+} */
+
+
+.images {
+    position: fixed;
+    width: 101%;
+    height: 101%;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+}
+
+.images > .img5 {
+    width: 90%;
+    height: 150%;
+    position: relative;
+    bottom: 210%;
+    right: 25%;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.images > .img {
+    width: 50%;
+    height: 30%;
+    position: relative;
+    top: 48%;
+    left: 00px;
+    right: 15%;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+}
+
+.images > .img3 {
+    width: 50%;
+    height: 30%;
+    position: relative;
+    top: 22%;
+    bottom: 0;
+    left: 50%;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+}
+
+.images > .img2 {
+    width: 100%;
+    height: 70%;
+    position: relative;
+    top: -30%;
+    bottom: 80%;
+    left: 0px;
+    z-index: 3;
+    margin: 0;
+    padding: 0;
+}
+
+.triangle-element {
+    width: 150rem;
+    height: 180rem;
+    background: #e0c29f;
+    clip-path: polygon(20% 70%, 0% 100%, 100% 100%);
+    position: fixed;
+    bottom: 40px;
+    left: 600px;
+    z-index: 0;
+}
+
+.triangle-element2 {
+    width: 200rem;
+    height: 270rem;
+    background: #e0c29f;
+    clip-path: polygon(10% 70%, 0% 100%, 100% 100%);
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    z-index: 0;
+}
+
+.white1 {
+    position: relative;
+    left: 38vw;
+    align-items: center;
+    background-color:  #F8F0E3;
+    height: 27vw;
+    width: 25vw;
+    opacity: 0.8;
+    border-radius: 10%;
+    position: relative;
+    top: 15vh;
+    z-index: 4;
+    /* margin-border: #091a2b; */
+    border-width: 20px;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.6); 
+}
+.white1:hover{
+    opacity: 1;
+}
+
+
+.white1 > h2 {
+    font-family: "Libre Baskerville", serif;
+    font-style: normal;
+    font-size: 5vw;
+    color: #072a4c;
+    position: relative;
+    z-index: 4;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    margin-bottom: 0;
+    top: 5%;
+}
+
+.white1 > h3 {
+    text-align: center;
+    font-family: "Libre Baskerville", serif;
+    font-style: normal;
+    font-size: 3vw;
+    color: #072a4c;
+    position: relative;
+    z-index: 4;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0;
+    top: 5%;
+}
+
+.white1 > .oval1,
+.white1 > .oval3 {
+    background-color: aliceblue;
+    opacity: 1;
+    z-index: 4;
+    width: 60%;
+    border-radius: 80px;
+    position: relative;
+    margin: 2vh auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 2vh;
+    background-color: rgb(246, 243, 240);
+    top: 5%;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.6); 
+}
+
+.white1 > .oval1:hover,
+.white1 > .oval3:hover {
+    background-color: #c5c1b6;
+    opacity: 1;
+}
+
+.oval1 > p,
+.oval2 > p,
+.oval3 > p {
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    font-size: 1vw;
+    color: #0d1114;
+    position: relative;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .white1 {
+        width: 60%;
+        left: 15vw;
+        top: 20vh;
+        height: auto;
+        padding: 1vh;
+        border-radius: 5%;
+    }
+
+    .white1 > h2 {
+        font-size: 8vw;
+        border-radius: 5%;
+    }
+
+    .white1 > h3 {
+        font-size: 5vw;
+        
+    }
+
+    .white1 > .oval1,
+    .white1 > .oval3 {
+        width: 80%;
+        border-radius: 40px;
+    }
+
+    .oval1 > p,
+    .oval3 > p {
+        font-size: 4vw;
+    }
+
+   
+
+  
+}
+
+

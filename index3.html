@@ -44,19 +44,33 @@
             </div>
             
             <div class="control-group">
-                <h3>Difficulty Level</h3>
+                <h3>Visualization Speed</h3>
                 <div class="button-grid">
-                    <button class="control-btn difficulty" onclick="setMazeSize(10)">
-                        <span class="btn-label">Hard</span>
-                        <span class="btn-size">Complex</span>
+                    <button class="control-btn speed-btn" onclick="setSpeed(1)">
+                        <span class="btn-label">🐢 Slow</span>
+                        <span class="btn-size">Detailed</span>
                     </button>
-                    <button class="control-btn difficulty" onclick="setMazeSize(20)">
-                        <span class="btn-label">Medium</span>
+                    <button class="control-btn speed-btn" onclick="setSpeed(5)">
+                        <span class="btn-label">⚡ Medium</span>
                         <span class="btn-size">Balanced</span>
                     </button>
-                    <button class="control-btn difficulty" onclick="setMazeSize(30)">
-                        <span class="btn-label">Easy</span>
-                        <span class="btn-size">Simple</span>
+                    <button class="control-btn speed-btn" onclick="setSpeed(10)">
+                        <span class="btn-label">🚀 Fast</span>
+                        <span class="btn-size">Quick</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>Controls</h3>
+                <div class="button-grid">
+                    <button class="control-btn stop-btn" onclick="stopVisualization()">
+                        <span class="btn-label">⏹️ Stop</span>
+                        <span class="btn-size">Reset Maze</span>
+                    </button>
+                    <button class="control-btn reset-btn" onclick="resetMaze()">
+                        <span class="btn-label">🔄 Reset</span>
+                        <span class="btn-size">New Maze</span>
                     </button>
                 </div>
             </div>
@@ -73,8 +87,11 @@
         <p>&copy; 2026 Maze Zone. All rights reserved.</p>
     </footer>
     
-    <script src="mazes.js"></script>
     <script>
+        let p5Instance;
+        let visualizationSpeed = 5;
+        let isRunning = true;
+
         function setup() {
             let container = document.getElementById('canvas-container');
             let sketch = (p) => {
@@ -85,11 +102,12 @@
                 let stack = [];
                 let canvasWidth = 600;
                 let canvasHeight = 600;
+                let frameCounter = 0;
 
                 p.setup = function() {
                     let canvas = p.createCanvas(canvasWidth, canvasHeight);
                     canvas.parent('canvas-container');
-                    resetMaze();
+                    resetMazeInternal();
                 }
 
                 p.draw = function() {
@@ -97,20 +115,35 @@
                     for (let i = 0; i < grid.length; i++) {
                         grid[i].show();
                     }
-                    current.visited = true;
-                    current.highlight();
-                    let next = current.checkNeighbors();
-                    if (next) {
-                        next.visited = true;
-                        stack.push(current);
-                        removeWalls(current, next);
-                        current = next;
-                    } else if (stack.length > 0) {
-                        current = stack.pop();
+                    
+                    if (isRunning) {
+                        frameCounter++;
+                        
+                        // Only advance maze generation based on speed
+                        if (frameCounter >= (11 - visualizationSpeed)) {
+                            frameCounter = 0;
+                            
+                            current.visited = true;
+                            current.highlight();
+                            let next = current.checkNeighbors();
+                            if (next) {
+                                next.visited = true;
+                                stack.push(current);
+                                removeWalls(current, next);
+                                current = next;
+                            } else if (stack.length > 0) {
+                                current = stack.pop();
+                            }
+                        }
+                    } else {
+                        // Just display the maze without animating
+                        for (let i = 0; i < grid.length; i++) {
+                            grid[i].show();
+                        }
                     }
                 }
 
-                function resetMaze() {
+                function resetMazeInternal() {
                     grid = [];
                     stack = [];
                     cols = Math.floor(p.width / w);
@@ -122,18 +155,32 @@
                         }
                     }
                     current = grid[0];
+                    isRunning = true;
+                    frameCounter = 0;
                 }
 
                 p.setMazeSize = function(size) {
                     w = size;
-                    resetMaze();
+                    resetMazeInternal();
                 }
 
                 p.setCanvasSize = function(width, height) {
                     canvasWidth = width;
                     canvasHeight = height;
                     p.resizeCanvas(canvasWidth, canvasHeight);
-                    resetMaze();
+                    resetMazeInternal();
+                }
+
+                p.setSpeed = function(speed) {
+                    visualizationSpeed = speed;
+                }
+
+                p.stopVisualization = function() {
+                    isRunning = false;
+                }
+
+                p.resetMazeFunc = function() {
+                    resetMazeInternal();
                 }
 
                 function index(i, j) {
@@ -214,12 +261,37 @@
                     }
                 }
 
-                window.setMazeSize = (size) => p.setMazeSize(size);
-                window.setCanvasSize = (width, height) => p.setCanvasSize(width, height);
+                p5Instance = p;
             }
 
             new p5(sketch);
         }
+
+        // Global functions for buttons
+        function setCanvasSize(width, height) {
+            if (p5Instance && p5Instance.setCanvasSize) {
+                p5Instance.setCanvasSize(width, height);
+            }
+        }
+
+        function setSpeed(speed) {
+            visualizationSpeed = speed;
+            if (p5Instance && p5Instance.setSpeed) {
+                p5Instance.setSpeed(speed);
+            }
+        }
+
+        function stopVisualization() {
+            isRunning = false;
+        }
+
+        function resetMaze() {
+            if (p5Instance && p5Instance.resetMazeFunc) {
+                p5Instance.resetMazeFunc();
+            }
+        }
+
+        setup();
     </script>
 </body>
 </html>

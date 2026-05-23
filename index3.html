@@ -3,34 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maze Generator</title>
+    <title>Maze Visualization - Maze Zone</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="mazes.js"></script>
     <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-    <div class = "whitebox1">
-      <div class="buttons-container">
-        <div class="buttons-row">
-            <button class="button" onclick="setCanvasSize(400, 400)">Small Canvas</button>
-            <button class="button" onclick="setCanvasSize(600, 600)">Medium Canvas</button>
-            <button class="button" onclick="setCanvasSize(800, 800)">Large Canvas</button>
-        </div>
-    </div>
-      <div class="maze-buttons">
-        <button class="maze-button" onclick="setMazeSize(10)">Hard</button>
-        <button class="maze-button" onclick="setMazeSize(20)">Medium </button>
-        <button class="maze-button" onclick="setMazeSize(30)">Easy</button>
-    </div>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1><a href="index.html">Maze Zone</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index3.html" class="active">Visualizer</a></li>
+                <li><a href="index4.html">Game</a></li>
+            </ul>
+        </nav>
+    </header>
     
-  <div class="whitebox1">
-      <div class="smallbox1">
-          <p>jbhv</p>
-      </div>
-      <div class="smallbox2"></div>
-  </div>
-  
-
-    </div>
+    <main class="container">
+        <div class="controls-section">
+            <h2>Maze Generator</h2>
+            
+            <div class="control-group">
+                <h3>Canvas Size</h3>
+                <div class="button-grid">
+                    <button class="control-btn" onclick="setCanvasSize(400, 400)">
+                        <span class="btn-label">Small</span>
+                        <span class="btn-size">400×400</span>
+                    </button>
+                    <button class="control-btn" onclick="setCanvasSize(600, 600)">
+                        <span class="btn-label">Medium</span>
+                        <span class="btn-size">600×600</span>
+                    </button>
+                    <button class="control-btn" onclick="setCanvasSize(800, 800)">
+                        <span class="btn-label">Large</span>
+                        <span class="btn-size">800×800</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>Difficulty Level</h3>
+                <div class="button-grid">
+                    <button class="control-btn difficulty" onclick="setMazeSize(10)">
+                        <span class="btn-label">Hard</span>
+                        <span class="btn-size">Complex</span>
+                    </button>
+                    <button class="control-btn difficulty" onclick="setMazeSize(20)">
+                        <span class="btn-label">Medium</span>
+                        <span class="btn-size">Balanced</span>
+                    </button>
+                    <button class="control-btn difficulty" onclick="setMazeSize(30)">
+                        <span class="btn-label">Easy</span>
+                        <span class="btn-size">Simple</span>
+                    </button>
+                </div>
+            </div>
+            
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </div>
+        
+        <div class="canvas-container">
+            <!-- p5.js will render canvas here -->
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2026 Maze Zone. All rights reserved.</p>
+    </footer>
 </body>
 </html>

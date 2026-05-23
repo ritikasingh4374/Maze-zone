@@ -3,14 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maze Game</title>
+    <title>Maze Game - Maze Zone</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game-container">
-        <canvas id="mazeCanvas" width="600" height="600"></canvas>
-        <div id="timer">Time left: 60s</div>
-    </div>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1><a href="index.html">Maze Zone</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index3.html">Visualizer</a></li>
+                <li><a href="index4.html" class="active">Game</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="game-container">
+            <div class="game-header">
+                <h2>Maze Game</h2>
+                <div class="timer" id="timer">Time: 60s</div>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="mazeCanvas" width="600" height="600"></canvas>
+            </div>
+            <div class="game-instructions">
+                <p>🎮 Use arrow keys to navigate • 🎯 Reach the gold square • ⏱️ Beat the clock!</p>
+                <a href="index4.html" class="reset-btn">New Game</a>
+                <a href="index.html" class="back-btn">← Home</a>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>&copy; 2026 Maze Zone. All rights reserved.</p>
+    </footer>
+    
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,28 +1,226 @@
-/* styles.css */
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+* {
     margin: 0;
-    background-color:#f7f5ed;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#game-container {
-    position: relative;
-    width: 600px;
-    height: 600px;
+body {
+    font-family: 'Inter', 'system-ui', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header & Navigation */
+header {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    padding: 1.5rem 0;
+}
+
+.navbar {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-brand a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a.active {
+    color: #60a5fa;
+}
+
+.nav-links a:hover {
+    color: #60a5fa;
+}
+
+/* Main */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.game-container {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.game-header h2 {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timer {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ef4444;
+    padding: 0.75rem 1.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    font-variant-numeric: tabular-nums;
+}
+
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 12px;
+    padding: 1.5rem;
 }
 
 #mazeCanvas {
-    border: 2px solid #edeaea;
+    border: 3px solid rgba(96, 165, 250, 0.3);
+    border-radius: 8px;
+    background: white;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-#timer {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    font-weight: bold;
+.game-instructions {
+    text-align: center;
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+}
+
+.game-instructions p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.reset-btn,
+.back-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    margin-right: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    color: white;
+    box-shadow: 0 10px 25px rgba(96, 165, 250, 0.3);
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(96, 165, 250, 0.4);
+}
+
+.back-btn {
+    background: rgba(148, 163, 184, 0.1);
+    color: #60a5fa;
+    border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.back-btn:hover {
+    background: rgba(96, 165, 250, 0.15);
+    border-color: #60a5fa;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: #64748b;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 1.5rem;
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .game-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .timer {
+        font-size: 1.2rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    #mazeCanvas {
+        max-width: 100%;
+    }
+
+    .reset-btn,
+    .back-btn {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
 }
